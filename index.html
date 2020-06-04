@@ -1,68 +1,291 @@
+<!DOCTYPE html>
 <html>
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <title>白龙·快捷指令</title>
-    <link href="./style.css" rel="stylesheet" type="text/css">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<title>白龙优惠小助手</title>
+		<script type="text/javascript" src="//lib.baomitu.com/jquery/2.2.4/jquery.min.js"></script>
+		<style>
+			blockquote, body, dd, dir, dl, fieldset, figure, form, h1, h2, h3, h4, h5, h6, hr, input, legend, menu, ol, optgroup, p, pre, tbody, td, textarea, tfoot, th, thead, ul {
+	margin: 0;
+	padding: 0
+}
+
+ol, ul {
+	list-style-type: none;
+	list-style-image: none
+}
+
+body, button, input, select, textarea {
+	-ms-text-autospace: ideograph-alpha ideograph-numeric ideograph-parenthesis;
+	text-autospace: ideograph-alpha ideograph-numeric ideograph-parenthesis
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 400
+}
+
+* {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+	background: #F6F5F7;
+}
+
+.beatHeader {
+	background: #494A4D;
+	height: 50px;
+	width: 100%;
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+}
+
+.beatMain {
+	position: relative;
+	z-index: 2;
+	padding: 0 16px;
+
+}
+
+.beatMain .imgContainer {
+	padding: 0 16px;
+	margin-top: 14px;
+}
+
+.beatMain .imgContainer img {
+	width: 100%;
+	height: auto;
+	box-shadow: 0px 3px 12px rgba(21, 0, 71, 0.16);
+}
+
+.beatMain .moonTitleContainer {
+	font-size: 14px;
+	color: rgba(0, 0, 0, 0.4);
+	margin-bottom: 16px;
+}
+
+.beatMain .moonTitleContainer span {
+	color: #FF5500;
+	margin-right: 16px;
+}
+
+.beatMain .itemContent {
+	font-size: 14px;
+	color: rgba(0, 0, 0, 0.80);
+	line-height: 21px;
+	text-align: left;
+	margin-bottom: 10px;
+}
+
+.beatMain .itemPrice {
+	font-family: STHeitiSC-Light;
+	font-size: 16px;
+	color: #FF5500;
+	line-height: 16.5px;
+	text-align: right;
+	margin-bottom: 10px;
+}
+
+.beatMain .itemTips {
+	font-size: 12px;
+	color: rgba(0,0,0,.4);
+	text-align: center;
+}
+
+.beatWord {
+	text-align: center;
+}
+
+.beatWord fieldset {
+	padding: 0.8em;
+	margin: 0 2px;
+	border: 1px dashed #f54d23;
+	background: #fff;
+}
+
+.beatWord fieldset legend {
+	background: #f54d23;
+	border: none;
+	font-size: 0.8rem;
+	line-height: 20px;
+	color: #fff;
+	padding: 0 4px;
+}
+
+.beatWord button {
+	border: none;
+	font-size: 16px;
+	padding: 6px 15px;
+	background: #f60;
+	display: inline-block;
+	margin: 10px auto;
+	border-radius: 16px;
+	color: #fff;
+}
+@keyframes float_{
+				0%{
+					transform: scale(1);
+				}
+				25%{
+					transform: scale(1.1);
+				}
+				50%{
+					transform: scale(1);
+				}
+				75%{
+					transform: scale(1.1);
+				}
+			}
+			@keyframes float_1{
+				0%{
+					transform: scale(1);
+				}
+				25%{
+					transform: scale(1.05);
+				}
+				50%{
+					transform: scale(1);
+				}
+				75%{
+					transform: scale(1.05);
+				}
+			}
+.float_{
+				width: 95%;
+				height: calc((100vw -3rem)*0.2185);
+				margin-left: 15px;
+				margin-top: 10px;
+				background: url('elm.jpg');
+				background-repeat: no-repeat;
+				background-size: 100% 100%;
+				-webkit-animation-name: float_;
+				-webkit-animation-timing-function: ease-in-out;
+				-webkit-animation-iteration-count: infinite;
+				-webkit-animation-duration: 3s;
+			}
+
+</style>
+	</head>
+	<body>
+
+		<div class="beatMain">
+			<div class="imgContainer">
+				<img id="img" src="" alt="">
+			</div>
+			<p class="itemContent">
+				<strong class="itemPrice"></strong>
+				<div id="item_title" style="font-weight: 700;font-size: 14px;margin-bottom: 5px;"></div>
+			</p>
+			<div class="beatWord">
+				<fieldset>
+					<legend id="copy_tip">长按框内>全选>复制>打开手淘</legend>
+					<p id="itemWord" class="itemWord" style="font-size: 12px;">复制框内整段文字，打开「手淘」即可「领取优惠券」并购买<span id="taokey"></span></p>
+				</fieldset>
+				<button id="copy" type="button" data-clipboard-text="" class="itemCopy" style="display:none;">手机链接</button>
+				<a id="coupons" href="" style="background: #00a1ff;border: none;font-size: 16px;padding: 6px 15px;display: inline-block;margin: 10px 4px 10px 4px;border-radius: 16px;color: #fff;text-decoration: none;">电脑链接</a>
+				<fieldset>
+					<p style="font-size: 12px;">点击下方图片领取饿了么外卖红包，每日可领！
+					<br />
+					公众号：白龙570
+					</p>
+				</fieldset>
+			</div>
+		</div>
+			<div onclick="window.open('https://t.cn/A6PrcBzK')">
+				<div class="float_"></div>
+			</div>
+		<script type="text/javascript" src="//lib.baomitu.com/clipboard.js/1.6.1/clipboard.min.js"></script>
+		<script>
+			function getParams(paras) {
+				var url = decodeURI(location.href);
+
+				var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
+				var returnValue;
+				for (i = 0; i < paraString.length; i++) {
+					var tempParas = paraString[i].split('=')[0];
+					var parasValue = paraString[i].split('=')[1];
+					if (tempParas === paras)
+						returnValue = parasValue;
+				}
+				if (typeof(returnValue) == "undefined") {
+					return "";
+				} else {
+					return returnValue;
+				}
+			}
+
+			$(function() {
+				var taowords = getParams('taowords');
+				var url = decodeURIComponent(getParams('url'));
+				var image = decodeURIComponent(getParams('image'));
+
+				$('#img').attr('src', image);
+				$('#coupons').attr('href', url);
+				$('#copy').attr('data-clipboard-text', '￥' + taowords + '￥');
+				$('#taokey').text('￥' + taowords + '￥');
+			})
 
 
-</head>
+			//复制文本
+			var clipboard = new Clipboard('.itemCopy');
+			clipboard.on('success',
+				function(e) {
+					if (e.trigger.disabled == false || e.trigger.disabled == undefined) {
+						e.trigger.innerHTML = "复制成功，打开淘宝会自动弹出口令";
+						e.trigger.style.backgroundColor = "#9ED29E";
+						e.trigger.style.borderColor = "#9ED29E";
+						//e.clearSelection();
+						e.trigger.disabled = true;
+						//2秒后按钮恢复原状
+						setTimeout(function() {
+								e.trigger.innerHTML = "一键复制";
+								e.trigger.style.backgroundColor = "#f54d23";
+								e.trigger.style.borderColor = "#f54d23";
+								e.trigger.disabled = false;
+							},
+							2000);
+					}
+				});
 
-<body oncontextmenu="return false" onselectstart="return false" style="">
-    <div id="max_box">
-        <div class="nav">
-            <ul class="menu">
-                <li class="list"><a class="list_a" href="https://ae85.cn/index.html">首页</a></li>
-               
-            </ul>
-        </div>
-        <!--版本：3.2 《URL：workflow://import-workflow/?url=https://workflow.is/workflows/0a228fe5a0204f9196e0dfc10058777e.wflow&name=%E5%B0%8F%E8%89%AF%20-%20%E6%9B%B4%E6%96%B0%E5%99%A8%203.2》-->
+			clipboard.on('error',
+				function(e) {
+					e.trigger.innerHTML = "复制失败";
+					e.trigger.style.backgroundColor = "#8f8f8f";
+					e.trigger.style.borderColor = "#8f8f8f";
+				});
 
-        <div class="top">
-            <br>
-            <div class="tip">下列个人原创规则分享 ~ 请勿转载</div>
-        </div>
-    
-        <div class="al" onClick="install(&#39;1&#39;)">
-            <span class="icon">
-                <img src="./iPhone 8、小良 - 系列作品_files/xiaoliang.png">
-            </span>
-            <span class="box">
-                <a class="name">小良 - 更新器 3.5</a><br>
-                <a class="about1">全新改版：2019年4月24日</a>
-                <a class="about">此规则只用于更新小良个人规则<br>内置：Wf规则、Pin脚本、破解App 等</a>
-            </span>
-        </div>
+			$(function() {
 
+				//UA判断
+				var isShow = 0; //控制是否显示一键复制按钮
+				var ua = navigator.userAgent.toLowerCase();
 
-        <div class="tip" style="margin-top:60px;">下列规则由个人修改优化编辑整理</div>
+				if (ua.match(/iphone/i) == "iphone" || ua.match(/ipad/i) == "ipad") {
 
-        <div class="al" onClick="install(&#39;8dfbb38c45d848a68f6b771228944916&#39;,this)">
-            <span class="icon">
-                <img src="./iPhone 8、小良 - 系列作品_files/ssgjdq.jpg"></span>
-            <span class="box">
-                <a class="name">搜索工具大全</a><br>
-                <a class="about1">新增：威锋论坛搜索</a>
-                <a class="about">百度、谷歌、淘宝、网盘、等<br>问别人问题前请先搜索…</a>
-            </span>
-        </div>
+					$('#copy_tip').text("长按框内 > 拷贝 > 打开手淘");
+					var iphoneInfo = ua.match(/iphone os (\d{1,})/i);
+					var iosVersion = iphoneInfo[1];
+					if (iosVersion >= 10 || ua.match(/ipad/i) == 'ipad') {
+						$('.itemCopy').show();
+					}
 
-        <div class="al" onClick="install(&#39;e7bd9120a3404cf2b98759d59f492307&#39;,this)">
-            <span class="icon">
-                <img src="./iPhone 8、小良 - 系列作品_files/ytst.jpg"></span>
-            <span class="box">
-                <a class="name">以图搜图</a><br>
-                <a class="about1">新增 ：百度识图、搜狗识图</a>
-                <a class="about">手机无需翻墙即可使用。<br>可用于查找未知名称的电影…</a>
-            </span>
-        </div>
+				} else {
+					$('.itemCopy').show();
+				}
 
-        <br>
+				//自动选中
+				var beat = document.querySelector('.beatWord');
+				var word = document.querySelector('.itemWord');
+				var copy = document.querySelector('.itemCopy');
+				document.addEventListener("selectionchange",
+					function(e) {
+						window.getSelection().selectAllChildren(word);
+					},
+					false);
 
-
-        <div class="bottom">whitelong</div>
-
-
-    </div>
-
-
-</body></html>
+			});
+		</script>
+	</body>
+</html
